@@ -31,31 +31,23 @@ public class JavaStreams {
 
     // Activity 3
     public static void activityThree() {
-        List<Integer> listOfIntegers = Arrays.asList(1, 2, 3, 4, 5);
-        List<Integer> result = listOfIntegers.stream().map(n -> n * n).toList();
+        List<Integer> listOfIntegers = Arrays.asList(1, 2, 3, 4, 5); // Initialize a List of numbers from 1 to 5
+        List<Integer> result = listOfIntegers.stream().map(n -> n * n).toList(); // Square each number by multiplying it to itself and convert to a List
         System.out.println("Squared numbers: " + result);
     }
 
     // Activity 4
     public static void activityFour() {
         List<Integer> numbersFrom1To10 = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10); // Initialize a list of the numbers from 1 to 10
-        Predicate<Integer> isEven = n -> n % 2 == 0; // Predicate that returns true if the number is odd (num mod 2 == 1)
-        Predicate<Integer> greaterThanFive = n -> n > 5; // Predicate that returns true if the number is odd (num mod 2 == 1)
+        Predicate<Integer> isEven = n -> n % 2 == 0; // Predicate that returns true if the number is even (num mod 2 == 0)
+        Predicate<Integer> greaterThanFive = n -> n > 5; // Predicate that returns true if the number is greater than 5
 
-        Predicate<Integer> combined = isEven.and(greaterThanFive);
+        Predicate<Integer> combined = isEven.and(greaterThanFive); // Combines both previous predicates (even number and number > 5)
 
         List<Integer> oddNumbersFrom1To10 = numbersFrom1To10.stream()
-                .filter(combined) // Run the isOdd predicate on the numbers from 1 to 10
-                .toList(); // Gathers the odd numbers and puts them in a List
+                .filter(combined) // Run the combined predicate (number is even and greater than 5)
+                .toList(); // Gathers the numbers that satisfy the combined predicate and puts them in a List
 
         System.out.println("Even and > 5: " + oddNumbersFrom1To10);
     }
-
-    // Activity 5
-    public static void activityFive() {
-
-
-        System.out.println("Even and > 5: " + oddNumbersFrom1To10);
-    }
-
 }
