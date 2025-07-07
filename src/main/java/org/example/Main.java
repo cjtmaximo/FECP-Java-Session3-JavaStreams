@@ -7,23 +7,29 @@ import java.util.stream.Collectors;
 public class Main {
     public static void activityFive(List<Person> people) {
         // Sorted by age (ascending)
-        people.sort(Comparator.comparingInt(Person::getAge));
+        List<Person> peopleSortedByAgeAsc = people.stream()
+                .sorted(Comparator.comparingInt(Person::getAge))
+                .toList();
         System.out.println("Sorted by age (ascending):");
-        people.forEach(System.out::println);
+        peopleSortedByAgeAsc.forEach(System.out::println);
 
         System.out.println();
 
         // Sorted by name
-        people.sort(Comparator.comparing(Person::getName));
+        List<Person> peopleSortedByName = people.stream()
+                .sorted(Comparator.comparing(Person::getName))
+                .toList();
         System.out.println("Sorted by name:");
-        people.forEach(System.out::println);
+        peopleSortedByName.forEach(System.out::println);
 
         System.out.println();
 
         // Sorted by age (descending)
-        people.sort(Comparator.comparingInt(Person::getAge).reversed());
+        List<Person> peopleSortedByAgeDesc = people.stream()
+                .sorted(Comparator.comparingInt(Person::getAge).reversed())
+                .toList();
         System.out.println("Sorted by age (descending):");
-        people.forEach(System.out::println);
+        peopleSortedByAgeDesc.forEach(System.out::println);
     }
 
     public static void main(String[] args) {
